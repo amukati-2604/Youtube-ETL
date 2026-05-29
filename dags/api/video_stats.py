@@ -8,12 +8,14 @@ from airflow.models import Variable
 #  from dotenv import load_dotenv
 #  load_dotenv(dotenv_path="./.env")
 
-YOUR_API_KEY = Variable.get("YOUR_API_KEY")
-CHANNEL_NAME = Variable.get("CHANNEL_NAME")
+# YOUR_API_KEY = Variable.get("YOUR_API_KEY")
+# CHANNEL_NAME = Variable.get("CHANNEL_NAME")
 maxResults = 50
 
 @task
 def get_playlist_id():
+    YOUR_API_KEY = Variable.get("YOUR_API_KEY")
+    CHANNEL_NAME = Variable.get("CHANNEL_NAME")
     try:
         url = f"https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle={CHANNEL_NAME}&key={YOUR_API_KEY}"
 
